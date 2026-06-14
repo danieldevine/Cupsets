@@ -48,6 +48,9 @@
             </tr>
             </tbody>
         </table>
+        <p>3 points for a win, 1 point for a draw,league position determined by 1.points, 2.goal difference and
+            3.reverse of original picking order. Not officially affiliated with FIFA or Dillon family sweepstake. </p>
     </section>
+
 
 </x-layout>

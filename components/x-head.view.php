@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comme:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="/assets/main.css">
-    <style>
-
-    </style>
     <title>{{ $title ?? '' }}</title>
+    <meta name="description"
+          content="Unofficial League table of the Dillon Cinematic Universe family world cup sweepstake.">
 </head>
