@@ -33,7 +33,7 @@ class Views
     {
         $view_dir = dirname(__DIR__, 1) . '/views/';
         $view_file = $view_dir . $view . '.view.php';
-
-        return self::renderer()->render(view($view_file, data: $data));
+        $app = new Cupsets('2000');
+        return self::renderer()->render(view($view_file, data: $data, app: $app));
     }
 }

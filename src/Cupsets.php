@@ -10,4 +10,5 @@ class Cupsets
     {
         $this->competition = new Competition($id);
     }
+
 }

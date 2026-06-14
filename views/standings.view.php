@@ -1,10 +1,10 @@
-<x-layout title="Standings">
+<x-layout title="League Table (Unofficial) ">
     <section>
         <table>
             <thead>
             <tr>
                 <th>
-                    Position
+                    #
                 </th>
                 <th>
                     Player
@@ -27,8 +27,8 @@
             <?php
             $count = 0 ?>
             <tr :foreach="$data['standings']['players'] as $player">
-                <td class="position">{{ $count + 1 }}</td>
-                <td>
+                <td class="table__position">{{ $count + 1 }}</td>
+                <td class="table__player">
                     {{ $player['player_name'] }}
                 </td>
                 <td>

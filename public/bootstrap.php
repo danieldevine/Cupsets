@@ -1,6 +1,17 @@
 <?php
 
-require_once dirname(__DIR__, 1) . '/vendor/autoload.php';
+use Coderjerk\Cupsets\Cupsets;
+use Coderjerk\Cupsets\DB;
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 1));
-$dotenv->load();
+
+function bootstrap(): void
+{
+    require_once dirname(__DIR__, 1) . '/vendor/autoload.php';
+
+    $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 1));
+    $dotenv->load();
+
+    DB::init();
+}
+
+bootstrap();
