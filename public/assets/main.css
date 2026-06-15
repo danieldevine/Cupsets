@@ -33,8 +33,8 @@ h1 {
 }
 
 h2 {
-    font-size: 40px;
-    padding: 2rem 4rem 0;
+    font-size: 30px;
+    margin-bottom: 1.25rem;
 }
 
 section {
@@ -65,7 +65,7 @@ section {
 }
 
 .game {
-    font-size: clamp(14px, 24px, 70px);
+    font-size: 1.5rem;
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     align-items: center;

@@ -1,5 +1,4 @@
-<x-layout :title="$data['day'] ?? ''">
-    <h1> Match Day {{ $data['day'] ?? '' }}</h1>
+<x-layout :title="'Match Day ' .  $data['day'] ?? ''">
     <section :if="!empty($data['live'])">
         <h2>Live</h2>
         <div class="games game--live">

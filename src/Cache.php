@@ -24,7 +24,7 @@ class Cache
         return null;
     }
 
-    public static function set($key, $data, $ttl = 3600): void
+    public static function set($key, $data, $ttl = 60): void
     {
         $data = serialize($data);
         self::redis()->setex($key, $ttl, $data);
