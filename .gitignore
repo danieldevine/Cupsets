@@ -3,3 +3,4 @@
 vendor/
 database/
 .tempest/
+.DS_Store
