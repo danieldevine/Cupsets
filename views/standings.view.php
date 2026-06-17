@@ -21,6 +21,10 @@
                 <th>
                     Original Pick
                 </th>
+                <th>
+                    MVQ*
+                </th>
+
             </tr>
             </thead>
             <tbody>
@@ -43,6 +47,7 @@
                 <td>
                     {{ $player['player_id'] }}
                 </td>
+                <td>{{ sprintf("%+d", $player['player_id'] - ($count + 1)) }}</td>
                 <?php
                 $count++ ?>
             </tr>
@@ -50,6 +55,7 @@
         </table>
         <p>3 points for a win, 1 point for a draw,league position determined by 1.points, 2.goal difference and
             3.reverse of original picking order. Not officially affiliated with FIFA or Dillon family sweepstake. </p>
+        <p>* MVQ = Moral Victory Quotient - position over/under original pick</p>
     </section>
 
 
