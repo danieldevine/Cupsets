@@ -2,6 +2,9 @@
 
 namespace Coderjerk\Cupsets;
 
+use DateTime;
+use DateTimeZone;
+use NumberFormatter;
 use stdClass;
 
 class Game
@@ -16,7 +19,7 @@ class Game
     public stdClass $season;
     public int $id;
     public ?int $matchday;
-    public ?string $utcDate;
+    public DateTime $utcDate;
     public ?string $group;
     public string $stage;
     public string $status;
@@ -33,10 +36,33 @@ class Game
         $this->season = $data->season;
         $this->id = $data->id;
         $this->matchday = $data->matchday;
-        $this->utcDate = $data->utcDate;
         $this->group = $data->group;
         $this->stage = $data->stage;
         $this->status = $data->status;
+        $this->utcDate = $this->getLocalDate($data->utcDate);
+    }
+
+    public function getLocalDate($utcDate): DateTime
+    {
+        $date = new DateTime($utcDate);
+        $date->setTimezone(new DateTimeZone('UTC'));
+        $date->setTimezone(new DateTimeZone('GMT+1'));
+        return $date;
+    }
+
+    public static function niceName($name): string
+    {
+        $format = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+
+        if (!str_starts_with($name, 'Bot')) {
+            return $name;
+        }
+
+        $parts = explode(' ', $name);
+        $bot_number = (int)$parts[1];
+        $nice_number = $format->format($bot_number);
+        return $parts[0] . ' ' . ucfirst($nice_number);
+
     }
 
 }

@@ -41,6 +41,16 @@ class Team
         return $stmt->fetch();
     }
 
+    public static function getTeamByName(string $name)
+    {
+        $db = DB::connect();
+        $sql = "SELECT * FROM teams WHERE team_name = :name";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':name', $name);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public static function all(): ?array
     {
         $teams = [];

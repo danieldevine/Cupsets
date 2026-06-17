@@ -1,5 +1,5 @@
 <x-layout title="League Table (Unofficial) ">
-    <section>
+    <section class="section--standings">
         <table>
             <thead>
             <tr>

@@ -8,10 +8,14 @@ use Coderjerk\Cupsets\Views;
 
 class MatchdayController
 {
+    public function competition(): Competition
+    {
+        return new Competition('2000');
+    }
+
     public function getMatchday($matchday): array
     {
-        $competition = new Competition('2000');
-        $tournament = $competition->matches();
+        $tournament = $this->competition()->matches();
 
         $games = [];
 
@@ -34,7 +38,12 @@ class MatchdayController
 
     public function show(array $params): string
     {
-        $day = (int)$params['id'];
+        $day = (int)$this->competition()->current_matchday;
+        
+        if (!empty($params['id'])) {
+            $day = (int)$params['id'];
+        }
+
         return Views::render('matchday', $this->getMatchday($day));
     }
 }

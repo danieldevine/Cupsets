@@ -16,6 +16,7 @@ class Views
             dirname(__DIR__, 1) . '/components/x-head.view.php',
             dirname(__DIR__, 1) . '/components/x-layout.view.php',
             dirname(__DIR__, 1) . '/components/x-titlebar.view.php',
+            dirname(__DIR__, 1) . '/components/x-games.view.php',
         );
     }
 
