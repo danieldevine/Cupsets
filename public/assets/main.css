@@ -265,11 +265,19 @@ main {
     }
 
     section {
-        padding: 0;
+        padding: 1rem 0;
     }
 
     .games {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .game {
+        padding: 1rem;
+    }
+
+    .game__details {
+        font-size: 20px;
     }
 
     nav {
