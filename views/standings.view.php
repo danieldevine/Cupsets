@@ -73,12 +73,13 @@
             </tr>
             </tbody>
         </table>
+
+    </section>
+    <section>
         <p>3 points for a win, 1 point for a draw, league position determined by (1.) points, (2.) goal difference and
             (3.) reverse of original picking order. Not officially affiliated with FIFA or Dillon family
             sweepstake. </p>
         <p>* MVQ = Moral Victory Quotient - position over/under original pick.</p>
         <p>** Batting Average = goals scored/games played.</p>
     </section>
-
-
 </x-layout>
