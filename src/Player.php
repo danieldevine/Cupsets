@@ -95,7 +95,7 @@ class Player
         return implode(', ', str_replace('_', ' ', $names));
     }
 
-    public static function mergeForm($form): string
+    protected static function mergeForm($form): string
     {
         $a = $form[0];
         $b = $form[1];

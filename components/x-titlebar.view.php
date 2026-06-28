@@ -7,6 +7,9 @@
                 <a href="/">Standings</a>
             </li>
             <li>
+                <a href="/leaderboard">Leaderboard</a>
+            </li>
+            <li>
                 <a href="/games/">Games</a>
             </li>
         </ul>

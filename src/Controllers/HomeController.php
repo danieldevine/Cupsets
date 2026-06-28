@@ -8,7 +8,7 @@ use Coderjerk\Cupsets\Views;
 
 class HomeController
 {
-    protected function getStandings()
+    protected function getStandings(): array
     {
         $teams = self::updatedTeams();
         $players = self::updatedPlayers();
