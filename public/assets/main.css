@@ -65,6 +65,30 @@ section {
     grid-template-columns: repeat(2, 1fr);
 }
 
+.games--last-32 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.games--last-16 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.games--quarter-finals {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.games--semi-finals {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.games--third-place {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.games--final {
+    grid-template-columns: repeat(1, 1fr);
+}
+
 .game img {
     max-width: 100%;
     min-width: 50px;

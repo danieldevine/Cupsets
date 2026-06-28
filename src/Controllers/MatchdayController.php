@@ -33,13 +33,12 @@ class MatchdayController
             'completed' => $completed,
             'upcoming' => $upcoming
         ];
-
     }
 
     public function show(array $params): string
     {
         $day = (int)$this->competition()->current_matchday;
-        
+
         if (!empty($params['id'])) {
             $day = (int)$params['id'];
         }

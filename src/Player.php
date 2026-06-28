@@ -38,8 +38,11 @@ class Player
         return $stmt->fetch();
     }
 
-    public static function getPlayerByTeamName(string $team_name)
+    public static function getPlayerByTeamName(?string $team_name)
     {
+        if (!$team_name) {
+            return '?';
+        }
         $player_id = Team::getTeamByName(str_replace(' ', '_', $team_name))['player_id'];
 
         $player = self::getPlayer($player_id);

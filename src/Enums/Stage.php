@@ -1,0 +1,33 @@
+<?php
+
+namespace Coderjerk\Cupsets\Enums;
+
+enum Stage: string
+{
+    case FINAL = 'FINAL';
+    case THIRD_PLACE = 'THIRD_PLACE';
+    case SEMI_FINALS = 'SEMI_FINALS';
+    case QUARTER_FINALS = 'QUARTER_FINALS';
+    case LAST_16 = 'LAST_16';
+    case LAST_32 = 'LAST_32';
+    case LAST_64 = 'LAST_64';
+    case ROUND_4 = 'ROUND_4';
+    case ROUND_3 = 'ROUND_3';
+    case ROUND_2 = 'ROUND_2';
+    case ROUND_1 = 'ROUND_1';
+    case GROUP_STAGE = 'GROUP_STAGE';
+    case PRELIMINARY_ROUND = 'PRELIMINARY_ROUND';
+    case QUALIFICATION = 'QUALIFICATION';
+    case QUALIFICATION_ROUND_1 = 'QUALIFICATION_ROUND_1';
+    case QUALIFICATION_ROUND_2 = 'QUALIFICATION_ROUND_2';
+    case QUALIFICATION_ROUND_3 = 'QUALIFICATION_ROUND_3';
+    case PLAYOFF_ROUND_1 = 'PLAYOFF_ROUND_1';
+    case PLAYOFF_ROUND_2 = 'PLAYOFF_ROUND_2';
+    case PLAYOFFS = 'PLAYOFFS';
+    case REGULAR_SEASON = 'REGULAR_SEASON';
+    case CLAUSURA = 'CLAUSURA';
+    case APERTURA = 'APERTURA';
+    case CHAMPIONSHIP = 'CHAMPIONSHIP';
+    case RELEGATION = 'RELEGATION';
+    case RELEGATION_ROUND = 'RELEGATION_ROUND';
+}

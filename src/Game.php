@@ -6,6 +6,7 @@ use DateTime;
 use DateTimeZone;
 use NumberFormatter;
 use stdClass;
+use Coderjerk\Cupsets\Enums\Stage;
 
 class Game
 {
@@ -21,7 +22,7 @@ class Game
     public ?int $matchday;
     public DateTime $utcDate;
     public ?string $group;
-    public string $stage;
+    public Stage $stage;
     public string $status;
 
     public function __construct($data)
@@ -37,7 +38,7 @@ class Game
         $this->id = $data->id;
         $this->matchday = $data->matchday;
         $this->group = $data->group;
-        $this->stage = $data->stage;
+        $this->stage = Stage::from($data->stage);
         $this->status = $data->status;
         $this->utcDate = $this->getLocalDate($data->utcDate);
     }
@@ -62,7 +63,5 @@ class Game
         $bot_number = (int)$parts[1];
         $nice_number = $format->format($bot_number);
         return $parts[0] . ' ' . ucfirst($nice_number);
-
     }
-
 }
