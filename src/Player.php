@@ -141,8 +141,10 @@ class Player
         self::update($player['player_id'], 'player_points', $points);
         self::update($player['player_id'], 'games_played', $games_played);
         self::update($player['player_id'], 'branch', $branch);
-        $batting_average = ($player['player_goal_difference'] + $player['player_points']) / $player['games_played'];
-        self::update($player['player_id'], 'batting_average', $batting_average);
+        if ($player['games_played'] >= 1) {
+            $batting_average = ($player['player_goal_difference'] + $player['player_points']) / $player['games_played'];
+            self::update($player['player_id'], 'batting_average', $batting_average);
+        }
         return self::getPlayer($id);
     }
 
