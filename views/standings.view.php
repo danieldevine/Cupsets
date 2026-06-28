@@ -31,7 +31,7 @@
                     MVQ*
                 </th>
                 <th>
-                    Batting Average
+                    Batting Average**
                 </th>
             </tr>
             </thead>
@@ -62,7 +62,7 @@
                     {{ $player['player_id'] }}
                 </td>
                 <td>{{ sprintf("%+d", $player['player_id'] - ($count + 1)) }}</td>
-                <td>{{ $player['batting_average'] }}</td>
+                <td>{{ round($player['batting_average'], 5) }}</td>
                 <?php
                 $count++ ?>
             </tr>
@@ -71,6 +71,8 @@
         <p>3 points for a win, 1 point for a draw,league position determined by 1.points, 2.goal difference and
             3.reverse of original picking order. Not officially affiliated with FIFA or Dillon family sweepstake. </p>
         <p>* MVQ = Moral Victory Quotient - position over/under original pick</p>
+        <p>** Batting Average = points + goal difference / games played (claim moral superiority even when all your
+            teams are eliminated)</p>
     </section>
 
 
