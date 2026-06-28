@@ -64,7 +64,14 @@ class Team
                 'team_name' => $team['team_name'],
                 'team_points' => $team['team_points'],
                 'team_goals_for' => $team['team_goals_for'],
-                'team_goals_against' => $team['team_goals_against']
+                'team_goals_against' => $team['team_goals_against'],
+                'position' => $team['position'],
+                'played_games' => $team['played_games'],
+                'form' => $team['form'],
+                'won' => $team['won'],
+                'lost' => $team['lost'],
+                'draw' => $team['draw'],
+                'goal_difference' => $team['goal_difference'],
             ];
         }
         return $teams;
@@ -85,7 +92,14 @@ class Team
                 'team_name' => $team['team_name'],
                 'team_points' => $team['team_points'],
                 'team_goals_for' => $team['team_goals_for'],
-                'team_goals_against' => $team['team_goals_against']
+                'team_goals_against' => $team['team_goals_against'],
+                'position' => $team['position'],
+                'played_games' => $team['played_games'],
+                'form' => $team['form'],
+                'won' => $team['won'],
+                'lost' => $team['lost'],
+                'draw' => $team['draw'],
+                'goal_difference' => $team['goal_difference'],
             ];
         }
         return $teams;
@@ -98,6 +112,7 @@ class Team
         $competition = new Competition('2000');
         $standings = $competition->standings();
         $tables = [];
+
         // it's broken down into many tables for the different rounds.
         foreach ($standings?->standings as $standing) {
             if ($standing->type === 'TOTAL') {
@@ -110,6 +125,12 @@ class Team
             self::update($team_id, 'team_goals_against', $item->goalsAgainst);
             self::update($team_id, 'team_goals_for', $item->goalsFor);
             self::update($team_id, 'team_points', $item->points);
+            self::update($team_id, 'played_games', $item->playedGames);
+            self::update($team_id, 'form', $item->form);
+            self::update($team_id, 'won', $item->won);
+            self::update($team_id, 'lost', $item->lost);
+            self::update($team_id, 'draw', $item->draw);
+            self::update($team_id, 'goal_difference', $item->goalDifference);
         }
 
         return self::getTeam($team_id);

@@ -10,10 +10,16 @@
                     Player
                 </th>
                 <th>
+                    Games Played
+                </th>
+                <th>
                     Total Points
                 </th>
                 <th>
                     Goal Difference
+                </th>
+                <th>
+                    Form
                 </th>
                 <th>
                     Teams
@@ -24,7 +30,9 @@
                 <th>
                     MVQ*
                 </th>
-
+                <th>
+                    Batting Average
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -36,10 +44,16 @@
                     {{ $player['player_name'] }}
                 </td>
                 <td>
+                    {{ $player['games_played'] }}
+                </td>
+                <td>
                     {{ $player['player_points'] }}
                 </td>
                 <td>
                     {{ $player['player_goal_difference'] }}
+                </td>
+                <td>
+                    {{ $player['form'] }}
                 </td>
                 <td>
                     {{ Coderjerk\Cupsets\Player::playerTeamNames($player['player_id']) }}
@@ -48,6 +62,7 @@
                     {{ $player['player_id'] }}
                 </td>
                 <td>{{ sprintf("%+d", $player['player_id'] - ($count + 1)) }}</td>
+                <td>{{ $player['batting_average'] }}</td>
                 <?php
                 $count++ ?>
             </tr>

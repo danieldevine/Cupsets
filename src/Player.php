@@ -2,6 +2,8 @@
 
 namespace Coderjerk\Cupsets;
 
+use Coderjerk\Cupsets\Enums\Branch;
+
 class Player
 {
     public function create(string $name): void
@@ -63,7 +65,16 @@ class Player
                 'player_id' => $player['player_id'],
                 'player_name' => $player['player_name'],
                 'player_points' => $player['player_points'],
-                'player_goal_difference' => $player['player_goal_difference']
+                'player_goal_difference' => $player['player_goal_difference'],
+                'branch' => $player['branch'],
+                'games_played' => $player['games_played'],
+                'moral_winner' => $player['moral_winner'],
+                'moral_loser' => $player['moral_loser'],
+                'league_winner' => $player['league_winner'],
+                'cup_winner' => $player['cup_winner'],
+                'batting_average' => $player['batting_average'],
+                'eliminated' => $player['eliminated'],
+                'form' => $player['form'],
             ];
         }
         return $players;
@@ -84,23 +95,126 @@ class Player
         return implode(', ', str_replace('_', ' ', $names));
     }
 
+    public static function mergeForm($form): string
+    {
+        $a = $form[0];
+        $b = $form[1];
+
+        $merged = [];
+
+        foreach (array_map(null, $a, $b) as [$x, $y]) {
+            if ($x !== null && $x !== '') {
+                $merged[] = $x;
+            }
+            if ($y !== null && $y !== '') {
+                $merged[] = $y;
+            }
+        }
+
+        return implode('', $merged);
+    }
+
     public static function updatePlayerScore($id)
     {
         $player = self::getPlayer($id);
         $goal_difference = 0;
         $points = 0;
         $teams = self::playerTeams($id);
+        $merged_form = [];
+        $games_played = 0;
+        $branch = self::assignBranch($player['player_name'])->value;
 
         foreach ($teams as $team) {
             $goal_difference = $goal_difference + $team['team_goals_for'];
             $goal_difference = $goal_difference - $team['team_goals_against'];
-            $points = $points + $team['team_points'];
+            // not sure if points incremented after group stage in api so calculating manually
+            $points = $points + $team['won'] * 3;
+            $points = $points + $team['draw'] * 1;
+            $merged_form[] = array_map('trim', explode(',', $team['form']));
+            $games_played = $games_played + $team['played_games'];
         }
 
+        $merged_form = self::mergeForm($merged_form);
+
+        self::update($player['player_id'], 'form', $merged_form);
         self::update($player['player_id'], 'player_goal_difference', $goal_difference);
         self::update($player['player_id'], 'player_points', $points);
-
+        self::update($player['player_id'], 'games_played', $games_played);
+        self::update($player['player_id'], 'branch', $branch);
+        $batting_average = ($player['player_goal_difference'] + $player['player_points']) / $player['games_played'];
+        self::update($player['player_id'], 'batting_average', $batting_average);
         return self::getPlayer($id);
+    }
+
+    public static function assignBranch(string $player_name): ?Branch
+    {
+        $ardpatrick = [
+            'Dan',
+            'Ellen',
+            'Luke',
+            'Nina'
+        ];
+
+        $jamestown = [
+            'Clodagh',
+            'Ewan',
+            'Isla',
+            'Pat',
+            'Paula',
+        ];
+
+        $charleville = [
+            'Evie',
+            'Kieran',
+            'Mary',
+        ];
+
+        $ardskeagh = [
+            'Grandad',
+            'Nana',
+            'John'
+        ];
+
+        $botland = [
+            'Bot 1',
+            'Bot 2',
+            'Bot 3',
+            'Bot 4',
+        ];
+
+        $limerick = [
+            'Andy',
+            'Emily',
+            'Niamh',
+            'Oscar',
+            'Sadie',
+        ];
+
+        if (in_array($player_name, $ardpatrick)) {
+            return Branch::ARDPATRICK;
+        }
+
+        if (in_array($player_name, $ardskeagh)) {
+            return Branch::ARDSKEAGH;
+        }
+
+        if (in_array($player_name, $botland)) {
+            return Branch::BOTLAND;
+        }
+
+        if (in_array($player_name, $charleville)) {
+            return Branch::CHARLEVILLE;
+        }
+
+        if (in_array($player_name, $jamestown)) {
+            return Branch::JAMESTOWN;
+        }
+
+        if (in_array($player_name, $limerick)) {
+            return Branch::LIMERICK;
+        }
+
+        return null;
     }
 
 }
