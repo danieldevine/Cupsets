@@ -101,6 +101,8 @@ class DB
             'cup_winner' => 'INTEGER DEFAULT 0 NOT NULL',
             'batting_average' => 'INTEGER DEFAULT 0 NOT NULL',
             'eliminated' => 'INTEGER DEFAULT 0 NOT NULL',
+            'golden_boot_winner' => 'INTEGER DEFAULT 0 NOT NULL',
+            'player_goals_scored' => 'INTEGER NOT NULL DEFAULT 0',
         ];
 
         $existing = array_flip(

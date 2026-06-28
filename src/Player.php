@@ -122,16 +122,19 @@ class Player
         $teams = self::playerTeams($id);
         $merged_form = [];
         $games_played = 0;
+        $goals_scored = 0;
         $branch = self::assignBranch($player['player_name'])->value;
+
 
         foreach ($teams as $team) {
             $goal_difference = $goal_difference + $team['team_goals_for'];
             $goal_difference = $goal_difference - $team['team_goals_against'];
-            // not sure if points incremented after group stage in api so calculating manually
+            //Not sure if points incremented after group stage in api so calculating manually
             $points = $points + $team['won'] * 3;
             $points = $points + $team['draw'] * 1;
             $merged_form[] = array_map('trim', explode(',', $team['form']));
             $games_played = $games_played + $team['played_games'];
+            $goals_scored = $goals_scored + $team['team_goals_for'];
         }
 
         $merged_form = self::mergeForm($merged_form);
@@ -141,8 +144,9 @@ class Player
         self::update($player['player_id'], 'player_points', $points);
         self::update($player['player_id'], 'games_played', $games_played);
         self::update($player['player_id'], 'branch', $branch);
+        self::update($player['player_id'], 'player_goals_scored', $goals_scored);
         if ($player['games_played'] >= 1) {
-            $batting_average = ($player['player_goal_difference'] + $player['player_points']) / $player['games_played'];
+            $batting_average = $player['player_goals_scored'] / $player['games_played'];
             self::update($player['player_id'], 'batting_average', $batting_average);
         }
         return self::getPlayer($id);

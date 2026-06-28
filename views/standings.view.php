@@ -19,6 +19,9 @@
                     Goal Difference
                 </th>
                 <th>
+                    Goals Scored
+                </th>
+                <th>
                     Form
                 </th>
                 <th>
@@ -52,6 +55,8 @@
                 <td>
                     {{ $player['player_goal_difference'] }}
                 </td>
+                <td> {{ $player['player_goals_scored'] }}</td>
+
                 <td>
                     {{ $player['form'] }}
                 </td>
@@ -68,11 +73,11 @@
             </tr>
             </tbody>
         </table>
-        <p>3 points for a win, 1 point for a draw,league position determined by 1.points, 2.goal difference and
-            3.reverse of original picking order. Not officially affiliated with FIFA or Dillon family sweepstake. </p>
-        <p>* MVQ = Moral Victory Quotient - position over/under original pick</p>
-        <p>** Batting Average = points + goal difference / games played (claim moral superiority even when all your
-            teams are eliminated)</p>
+        <p>3 points for a win, 1 point for a draw, league position determined by (1.) points, (2.) goal difference and
+            (3.) reverse of original picking order. Not officially affiliated with FIFA or Dillon family
+            sweepstake. </p>
+        <p>* MVQ = Moral Victory Quotient - position over/under original pick.</p>
+        <p>** Batting Average = goals scored/games played.</p>
     </section>
 
 
