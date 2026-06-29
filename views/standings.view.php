@@ -77,7 +77,10 @@
     </section>
     <section>
         <p>3 points for a win, 1 point for a draw, league position determined by (1.) points, (2.) goal difference and
-            (3.) reverse of original picking order. Not officially affiliated with FIFA or Dillon family
+            (3.) reverse of original picking order.</p>
+        <p> In the knockout stages results are counted at the end of extra time - i.e going to penalties means a draw.
+            Penalties don't count towards goal difference.</p>
+        <p>Not officially affiliated with FIFA or Dillon family
             sweepstake. </p>
         <p>* MVQ = Moral Victory Quotient - position over/under original pick.</p>
         <p>** Batting Average = goals scored/games played.</p>
