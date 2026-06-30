@@ -22,9 +22,6 @@
                     Goals Scored
                 </th>
                 <th>
-                    Form
-                </th>
-                <th>
                     Teams
                 </th>
                 <th>
@@ -56,10 +53,6 @@
                     {{ $player['player_goal_difference'] }}
                 </td>
                 <td> {{ $player['player_goals_scored'] }}</td>
-
-                <td>
-                    {{ $player['form'] }}
-                </td>
                 <td>
                     {{ Coderjerk\Cupsets\Player::playerTeamNames($player['player_id']) }}
                 </td>

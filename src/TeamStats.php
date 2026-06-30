@@ -82,22 +82,17 @@ class TeamStats
         $full_time = $score->fullTime ?? null;
         $penalties = $score->penalties ?? null;
 
-        $home_goals = self::sideGoals($full_time, 'home');
-        $away_goals = self::sideGoals($full_time, 'away');
+        $home_goals = $full_time->home;
+        $away_goals = $full_time->away;
 
-        if (($score->duration ?? 'REGULAR') === 'PENALTY_SHOOTOUT' && $penalties !== null) {
-            $home_goals -= self::sideGoals($penalties, 'home');
-            $away_goals -= self::sideGoals($penalties, 'away');
+        if ($penalties !== null) {
+            $regular_time = $score->regularTime ?? null;
+            $extra_time = $score->extraTime ?? null;
+            $home_goals = $regular_time->home + $extra_time->home;
+            $away_goals = $regular_time->away + $extra_time->away;
         }
 
         return [$home_goals, $away_goals];
     }
 
-    private static function sideGoals(?object $score_node, string $side): int
-    {
-        if ($score_node === null) {
-            return 0;
-        }
-        return (int)($score_node->{$side} ?? $score_node->{$side . 'Team'} ?? 0);
-    }
 }
